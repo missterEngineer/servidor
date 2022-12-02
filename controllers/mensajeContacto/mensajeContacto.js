@@ -1,4 +1,5 @@
 import pool from "../../bd/db.js";
+import transporter from "../../services/email/email.js";
 
 
 const contactoMsg = async (req, res) =>{
@@ -10,6 +11,13 @@ const contactoMsg = async (req, res) =>{
         let query = "INSERT INTO contactMsg(typePerson, emailPerson, namePerson, msg, estateViewed) VALUES($1, $2, $3, $4, $5)";
 
         await pool.query(query, [typePerson, email, name, msg, false]);
+
+        await transporter.sendMail({
+            from: 'atencion de cliente', 
+            to: "ayudahutrit@gmail.com",
+            subject: typePerson + " " + email, 
+            text: `${name}. \n ${email}. \n ${msg}.`, 
+        });
 
         return res.status(200).send({
             msg: "Mensaje enviado"

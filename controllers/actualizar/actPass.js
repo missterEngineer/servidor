@@ -25,7 +25,7 @@ const actPass = async (req, res) =>{
 
     const code = tokenNewUser(id_user)
         await transporter.sendMail({
-            from: '"Recuperacion de contraseña" <hutrit@gmail.com>', 
+            from: '"Recuperacion de contraseña" <ayudahutrit@gmail.com>', 
             to: emailRes,
             subject: "Hutrit", 
             text: "", 

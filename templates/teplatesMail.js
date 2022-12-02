@@ -35,7 +35,7 @@ export const tepleteNewUser = (token) =>{
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 30px 40px 30px 40px; text-align: center;">
-                                    <img src="logo.png" width="57" height="13" alt="alt_text" border="0" style="height: auto; font-family: sans-serif; font-size: 18px; line-height: 20px; color: #555555;">
+                                    <img src="http://res.cloudinary.com/dxg3enn8i/image/upload/v1670000382/jubifu2x83ru0zahpv8g.png" width="180" height="60" alt="alt_text" border="0" style="height: auto; font-family: sans-serif; font-size: 18px; line-height: 20px; color: #555555;">
                                 </td>
                             </tr>
                         </table>
@@ -76,8 +76,7 @@ export const tepleteNewUser = (token) =>{
                                      </tr>
                                      <tr>
                                          <td valign="top" style="text-align: center; padding: 10px 20px 15px 20px; font-family: sans-serif; font-size: 18px; line-height: 20px; color: #ffffff;">
-                                             <p style="margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                             tempor incididunt ut labore.</p>
+                                             <p style="margin: 0;">Bienvenido a nuestra comunidad de profesionales con mucho talento.</p>
                                          </td>
                                      </tr>
                                      <tr>
@@ -186,7 +185,7 @@ export const tepleteCambiosPass = (token) =>{
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 30px 40px 30px 40px; text-align: center;">
-                                    <img src="logo.png" width="57" height="13" alt="alt_text" border="0" style="height: auto; font-family: sans-serif; font-size: 18px; line-height: 20px; color: #555555;">
+                                    <img src="http://res.cloudinary.com/dxg3enn8i/image/upload/v1670000382/jubifu2x83ru0zahpv8g.png" width="180" height="60" alt="alt_text" border="0" style="height: auto; font-family: sans-serif; font-size: 18px; line-height: 20px; color: #555555;">
                                 </td>
                             </tr>
                         </table>
@@ -222,13 +221,12 @@ export const tepleteCambiosPass = (token) =>{
                                      <tr>
                                          <td valign="top" style="text-align: center; padding: 60px 0 10px 20px;">
                                      
-                                             <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 30px; line-height: 36px; color: #ffffff; font-weight: bold;">Bienvenido a HUTRIT</h1>
+                                             <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 30px; line-height: 36px; color: #ffffff; font-weight: bold;">HUTRIT Human Talent IT</h1>
                                          </td>
                                      </tr>
                                      <tr>
                                          <td valign="top" style="text-align: center; padding: 10px 20px 15px 20px; font-family: sans-serif; font-size: 18px; line-height: 20px; color: #ffffff;">
-                                             <p style="margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                             tempor incididunt ut labore.</p>
+                                             <p style="margin: 0;">De clic sobre el botón para restablecer su contraseña.</p>
                                          </td>
                                      </tr>
                                      <tr>
@@ -240,7 +238,7 @@ export const tepleteCambiosPass = (token) =>{
                                                  <tr>
                                                      <td style="border-radius: 50px; background: #0159B7; text-align: center;" class="button-td">
                                                          <a href="${url}" style="background: #0159B7; border: 15px solid #0159B7; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px; font-weight: bold;" class="button-a">
-                                                             <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Verificar Cuenta&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                             <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Restablecer contraseña&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                                          </a>
                                                      </td>
                                                  </tr>

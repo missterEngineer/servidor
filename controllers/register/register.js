@@ -63,7 +63,7 @@ const registerUser = async (req, res) =>{
         }
 
 
-        sendMailNewUser(id, cuenta.username, cuenta.email)
+        await sendMailNewUser(id, cuenta.username, cuenta.email)
 
 
         return res.status(200).send({

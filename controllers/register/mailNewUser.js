@@ -9,7 +9,7 @@ const sendMailNewUser = async (id_user, username, email) =>{
     const token = tokenNewUser(id_user, username, email)
 
     await transporter.sendMail({
-        from: '"Hutrit" <hutrit@gmail.com>', 
+        from: '"Hutrit" <ayudahutrit@gmail.com>', 
         to: email,
         subject: "Confirmación de cuenta", 
         text: "confirme su cuenta en hutrit", 
