@@ -18,7 +18,8 @@ const controllersLogin = {
 
         if(resUser.rows.length == 0){
             return res.status(400).send({
-                error: "User no encontrado"
+                error: "User no encontrado",
+                typeError: "username"
             });
         }
 
@@ -32,7 +33,8 @@ const controllersLogin = {
         if(!check){
 
             return res.status(400).send({
-                error: "error password"
+                error: "error password",
+                typeError: "password"
             })
         }
         

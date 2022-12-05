@@ -7,7 +7,7 @@ import uploadCloud from "../../services/cloudinary/cloundinary.js";
 const uploadImgUser = async (req, res) =>{
 
     try {
-        const {path, mimetype} = req.file;
+        const {path} = req.file;
         const id = req.userInfo.id;
 
 
