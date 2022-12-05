@@ -23,11 +23,8 @@ const controllersLogin = {
             });
         }
 
-      
 
         const user = resUser.rows[0];
-
-        
         const check = await bcrypt.compare(password, user.password);
 
         if(!check){

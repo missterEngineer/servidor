@@ -14,7 +14,7 @@ const contactoMsg = async (req, res) =>{
 
         await transporter.sendMail({
             from: 'atencion de cliente', 
-            to: "ayudahutrit@gmail.com",
+            to: "info@hutrit.com",
             subject: typePerson + " " + email, 
             text: `${name}. \n ${email}. \n ${msg}.`, 
         });
