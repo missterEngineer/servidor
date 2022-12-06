@@ -20,7 +20,6 @@ import contactoMsg from "../controllers/mensajeContacto/mensajeContacto.js";
 import getInfoApi from "../controllers/paisesApi/infoPaises.js";
 
 
-
 const upload = multer({storage});
 const routes = Router();
 
@@ -56,7 +55,7 @@ routes.delete("/deleteIdioma:id", middleware, actSkills.deleteIdioma);
 routes.delete("/deleteSkill:id", middleware, actSkills.deleteSkill);
 
 
-routes.post("/addImgUser", middleware,  upload.single("img"), uploadImgUser);
+routes.post("/addImgUser", middleware, upload.single("img"), uploadImgUser);
 routes.post("/addUrlImgUser", middleware, actImgUrl);
 
 

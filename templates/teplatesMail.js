@@ -1,7 +1,7 @@
 
 export const tepleteNewUser = (token) =>{
 
-    const url = `hutrit-proyect.firebaseapp.com/checkuser${token}`;
+    const url = `https://hutrit.com/checkuser${token}`;
 
     return `<body width="100%" bgcolor="#F1F1F1" style="margin: 0; mso-line-height-rule: exactly;">
     <center style="width: 100%; background: #F1F1F1; text-align: left;">
@@ -151,7 +151,7 @@ export const tepleteNewUser = (token) =>{
 
 export const tepleteCambiosPass = (token) =>{
 
-    const url = `hutrit-proyect.firebaseapp.com/recoverypassword/${token}`;
+    const url = `https://hutrit.com/${token}`;
 
     return `<body width="100%" bgcolor="#F1F1F1" style="margin: 0; mso-line-height-rule: exactly;">
     <center style="width: 100%; background: #F1F1F1; text-align: left;">
