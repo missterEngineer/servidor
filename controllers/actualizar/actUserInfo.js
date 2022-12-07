@@ -6,12 +6,12 @@ const actUserInfo = {
     actualizarInfo: async (req, res) =>{
         try {
 
-            const {nombre, apellido, profesion, telefono, ubicacion} = req.body;
+            const {nombre, apellido, profesion, dateNac, telefono, ubicacion} = req.body;
             const id = req.userInfo.id
             
-            let queryUpdate = "UPDATE userInfo SET names = $1, surname = $2, tlf = $3, location = $4, profesion = $5 WHERE user_id = $6";
+            let queryUpdate = "UPDATE userInfo SET names = $1, surname = $2, tlf = $3, location = $4, profesion = $5, dateBirth = $6 WHERE user_id = $7";
 
-            await pool.query(queryUpdate, [nombre, apellido, telefono, ubicacion, profesion, id]);
+            await pool.query(queryUpdate, [nombre, apellido, telefono, ubicacion, profesion, dateNac, id]);
 
 
             return res.status(200).send({
