@@ -1,5 +1,4 @@
 import jwt from "jwt-simple";
-import dayjs from "dayjs";
 
 const middleware = (req, res, next) =>{
 

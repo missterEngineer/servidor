@@ -18,6 +18,7 @@ import validateUser from "../controllers/register/validateUser.js";
 import actImgUrl from "../controllers/actualizar/actImgUrl.js";
 import contactoMsg from "../controllers/mensajeContacto/mensajeContacto.js";
 import getInfoApi from "../controllers/paisesApi/infoPaises.js";
+import sendValidateEmail from "../controllers/register/reValidateEmail.js";
 
 
 const upload = multer({storage});
@@ -72,6 +73,9 @@ routes.post("/sendmsgcontact", contactoMsg);
 routes.get("/getPaises", getInfoApi.getPaisInfo);
 routes.get("/getStates/:id", getInfoApi.getStatesInfo);
 routes.get("/getCities/:id", getInfoApi.getCitiesInfo);
+
+routes.get("/sendMailUser", middleware, sendValidateEmail);
+
 
 
 
