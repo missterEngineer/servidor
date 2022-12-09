@@ -19,6 +19,7 @@ import actImgUrl from "../controllers/actualizar/actImgUrl.js";
 import contactoMsg from "../controllers/mensajeContacto/mensajeContacto.js";
 import getInfoApi from "../controllers/paisesApi/infoPaises.js";
 import sendValidateEmail from "../controllers/register/reValidateEmail.js";
+import controllerEverest from "../controllers/everest/everest.js";
 
 
 const upload = multer({storage});
@@ -75,6 +76,11 @@ routes.get("/getStates/:id", getInfoApi.getStatesInfo);
 routes.get("/getCities/:id", getInfoApi.getCitiesInfo);
 
 routes.get("/sendMailUser", middleware, sendValidateEmail);
+
+routes.get("/geteverest", middleware, controllerEverest.get);
+routes.post("/addeverest", middleware, controllerEverest.register);
+routes.put("/puteverest", middleware, controllerEverest.act);
+routes.delete("/cleareverest/:id", middleware, controllerEverest.clear);
 
 
 

@@ -10,7 +10,7 @@ const actFormacion = {
             
             let queryUpdate = "UPDATE studies SET typestudies = $1, study  = $2, institution  = $3, statestudy  = $4, datestartstudy = $5, datefinalstudy = $6 WHERE id_studies = $7";
 
-            await pool.query(queryUpdate, [tipoEstudio, estudio, institucion , estudioTerminado == "true" ? true : false, estudioTerminado == "true" ? dateInic : null, estudioTerminado == "true" ? dateFin : null, id]);
+            await pool.query(queryUpdate, [tipoEstudio, estudio, institucion , estudioTerminado == "true" ? true : false, estudioTerminado == "true" ? dateInic : null, estudioTerminado == "false" ? dateFin : null, id]);
 
             return res.status(200).send({
                 msg: "Actualizacion finalizada"
@@ -33,7 +33,7 @@ const actFormacion = {
             
             let queryUpdate = "UPDATE courses SET stage = $1, namecourse  = $2, statecourse  = $3, datestartcourse  = $4, datefinalcourse  = $5 WHERE id_courses = $6";
 
-            await pool.query(queryUpdate, [plataforma, curso,  cursoTerminado == "true" ? true : false, cursoTerminado == "true" ? dateInic : null, cursoTerminado == "true" ? dateFin : null, id]);
+            await pool.query(queryUpdate, [plataforma, curso,  cursoTerminado == "true" ? true : false, cursoTerminado == "true" ? dateInic : null, cursoTerminado == "false" ? dateFin : null, id]);
 
             return res.status(200).send({
                 msg: "Actualizacion finalizada"
