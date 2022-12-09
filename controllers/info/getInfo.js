@@ -97,6 +97,8 @@ const getInfo = {
         let querySkills = "SELECT * FROM skills WHERE skills.user_id = $1";
         const resSkills = await pool.query(querySkills, [valor])
 
+        let queyEve = "SELECT * FROM everest WHERE user_id = $1"
+        const resEve = await pool.query(queyEve, [valor])
 
         const info ={
             user: resUser.rows[0],
@@ -105,7 +107,8 @@ const getInfo = {
             job: resJob.rows,
             idiomas: resIdiomas.rows,
             softSkill: resSoft.rows,
-            skills: resSkills.rows
+            skills: resSkills.rows,
+            eve: resEve.rows
         };
 
 
