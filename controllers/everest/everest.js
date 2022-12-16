@@ -22,6 +22,23 @@ const controllerEverest = {
         }
     }, 
 
+    getAll: async (req, res) =>{
+        try {
+
+            let query = "SELECT everest.*, users.userName FROM everest INNER JOIN users ON everest.user_id = users.id_user";
+            const rep = await pool.query(query);
+
+            return res.status(200).send({
+                info: rep.rows
+            })
+
+        } catch (error) {
+            console.log(error)
+            return res.status(400).send({
+                msg: "Error"
+            })
+        }
+    },
 
     register: async (req, res) =>{
         try {

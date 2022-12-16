@@ -9,32 +9,14 @@ const registerUser = async (req, res) =>{
 
     const {persona, formacion, experiencia, idiomas, habilidadesTecnicas, cuenta, trabajo} = req.body;
 
-    try {
-
-        let queryUserName = "SELECT * FROM users WHERE username = $1";
-        const resUserValidar = await pool.query(queryUserName, [cuenta.username]);
-        if(resUserValidar.rows.length >= 1){
-    
-            return res.status(400).send({
-                msg: "Nombre de usuario ya registrado"
-            })
-        }
-    
-        let queryUserEmail = "SELECT * FROM users WHERE email = $1";
-        const resUserValidarEmail = await pool.query(queryUserEmail, [cuenta.email]);
-        if(resUserValidarEmail.rows.length >= 1){
-            return res.status(400).send({
-                msg: "Email ya registrado"
-            })
-        }
-    
+    try{
     
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const hash  = await bcrypt.hash(cuenta.password, salt);
     
-        let queryUser = "INSERT INTO users(username, email, password, userConfirmation, imgUser) VALUES($1, $2, $3, $4, $5)";
-        const resUser = await pool.query(queryUser, [cuenta.username, cuenta.email, hash, false, null]);
+        let queryUser = "INSERT INTO users(username, email, password, userConfirmation, imgUser, typeUser) VALUES($1, $2, $3, $4, $5, $6)";
+        await pool.query(queryUser, [cuenta.username, cuenta.email, hash, true, null, "user"]);
     
         const resId = await pool.query("SELECT id_user FROM users WHERE username = $1", [cuenta.username]);
     
@@ -62,9 +44,7 @@ const registerUser = async (req, res) =>{
             await registerEtiquetaTrabajo(id, trabajo.etiquetas);
         }
 
-
         await sendMailNewUser(id, cuenta.username, cuenta.email)
-
 
         return res.status(200).send({
             msg: "Registro finalizado"

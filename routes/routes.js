@@ -20,18 +20,22 @@ import contactoMsg from "../controllers/mensajeContacto/mensajeContacto.js";
 import getInfoApi from "../controllers/paisesApi/infoPaises.js";
 import sendValidateEmail from "../controllers/register/reValidateEmail.js";
 import controllerEverest from "../controllers/everest/everest.js";
-
+import { registerEverestHome, registerPer } from "../controllers/everest/everestHome.js";
+import checkerMail from "../controllers/checker/checkerEmail.js";
+import checkerCode from "../controllers/checker/checkerCode.js";
+import { middlewareValiToken, middlewareValiUSer } from "../middleware/middlewareValiUser.js";
+import loginAdmin from "../controllers/controllersAdmin/login/loginAdmin.js";
+import middlewareAdmin from "../middleware/middlewareAdmin.js"
+import getInfoAdmin from "../controllers/controllersAdmin/infoUsers/getInfoAdmin.js";
 
 const upload = multer({storage});
 const routes = Router();
 
-routes.post("/register", registerUser);
+routes.post("/register", middlewareValiToken, middlewareValiUSer, registerUser);
 routes.post("/login", controllersLogin.login);
 routes.post("/decode", controllersLogin.decode)
-
 routes.get("/getinfosec:info", middleware, getInfo.section);
 routes.get("/getinfofull", middleware, getInfo.sectionFull);
-routes.get("/getinfo:id", getInfo.getApi);
 
 
 routes.post("/addTrabajo", middleware, addInfo.trabajo);
@@ -78,10 +82,26 @@ routes.get("/getCities/:id", getInfoApi.getCitiesInfo);
 routes.get("/sendMailUser", middleware, sendValidateEmail);
 
 routes.get("/geteverest", middleware, controllerEverest.get);
+routes.get("/geteverestall", controllerEverest.getAll);
 routes.post("/addeverest", middleware, controllerEverest.register);
 routes.put("/puteverest", middleware, controllerEverest.act);
 routes.delete("/cleareverest/:id", middleware, controllerEverest.clear);
 
+
+routes.post("/everesthome", registerEverestHome);
+routes.post("/registerusercheck", middleware, registerPer);
+
+routes.post("/checkermail", middlewareValiUSer, checkerMail);
+routes.post("/checkmail", checkerCode);
+
+
+// ADMIN ROUTES
+
+
+routes.post("/loginADMIN", loginAdmin)
+
+routes.get("/getInfoUserADMIN/:idUser", middlewareAdmin, getInfoAdmin.section)
+routes.get("/getPDFUserADMIN/:idUSer", middlewareAdmin, getInfoAdmin.sectionFull)
 
 
 

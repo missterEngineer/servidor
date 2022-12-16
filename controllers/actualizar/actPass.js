@@ -21,7 +21,13 @@ const actPass = async (req, res) =>{
         })
     }
 
-    const {id_user} = resp.rows[0];
+    const {id_user, typeUser} = resp.rows[0];
+
+    if(typeUser == "ADMIN"){
+        return res.status(400).send({
+            msg: "this user is not allowed"
+        })
+    }
 
     const code = tokenNewUser(id_user)
         await transporter.sendMail({

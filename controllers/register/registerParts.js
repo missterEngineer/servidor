@@ -1,8 +1,27 @@
+import bcrypt from "bcrypt";
 
 import pool from "../../bd/db.js";
 
+export const registerUser = async (values, typeUser) =>{
 
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hash  = await bcrypt.hash(values.password, salt);
 
+    let queryUser = "INSERT INTO users(username, email, password, userConfirmation, imgUser, typeUser) VALUES($1, $2, $3, $4, $5, $6)";
+
+    await pool.query(queryUser, [values.username, values.email, hash, true, null, typeUser]);
+
+};
+
+export const registerPersona = async (id, values, profecion) =>{
+
+    if(values){
+        let query = "INSERT INTO userInfo(names, surname, dateBirth, nationality, docIdentity, tlf, location, user_id, profesion) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+        await pool.query(query, [values.nombre, values.apellido, values.fechaNac, values.nacionalidad, `${values.tipoDocumento} - ${values.numeroDocumento}`, `${values.codigoTlf} - ${values.telefono}`, `${values.paisUbicacion} - ${values.regiosUbicacion} - ${values.cityUbicacion}`, id, profecion.titulo])
+    }
+
+}
 
 export const registerExpLaboral = async (id, values) =>{
 
