@@ -27,6 +27,7 @@ import { middlewareValiToken, middlewareValiUSer } from "../middleware/middlewar
 import loginAdmin from "../controllers/controllersAdmin/login/loginAdmin.js";
 import middlewareAdmin from "../middleware/middlewareAdmin.js"
 import getInfoAdmin from "../controllers/controllersAdmin/infoUsers/getInfoAdmin.js";
+import seekerUser from "../controllers/controllersAdmin/seeker/seekerUser.js";
 
 const upload = multer({storage});
 const routes = Router();
@@ -98,11 +99,11 @@ routes.post("/checkmail", checkerCode);
 // ADMIN ROUTES
 
 
-routes.post("/loginADMIN", loginAdmin)
+routes.post("/loginADMIN", loginAdmin);
 
-routes.get("/getInfoUserADMIN/:idUser", middlewareAdmin, getInfoAdmin.section)
-routes.get("/getPDFUserADMIN/:idUSer", middlewareAdmin, getInfoAdmin.sectionFull)
-
+routes.get("/getInfoUserADMIN/:idUser", middlewareAdmin, getInfoAdmin.section);
+routes.get("/getPDFUserADMIN/:idUSer", middlewareAdmin, getInfoAdmin.sectionFull);
+routes.post("/seekerUsers", middlewareAdmin, seekerUser);
 
 
 
