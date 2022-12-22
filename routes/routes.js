@@ -28,6 +28,7 @@ import loginAdmin from "../controllers/controllersAdmin/login/loginAdmin.js";
 import middlewareAdmin from "../middleware/middlewareAdmin.js"
 import getInfoAdmin from "../controllers/controllersAdmin/infoUsers/getInfoAdmin.js";
 import seekerUser from "../controllers/controllersAdmin/seeker/seekerUser.js";
+import followRegisterUser from "../controllers/controllersAdmin/followUser/followUserRegister.js";
 
 const upload = multer({storage});
 const routes = Router();
@@ -105,6 +106,9 @@ routes.get("/getInfoUserADMIN/:idUser", middlewareAdmin, getInfoAdmin.section);
 routes.get("/getPDFUserADMIN/:idUSer", middlewareAdmin, getInfoAdmin.sectionFull);
 routes.post("/seekerUsers", middlewareAdmin, seekerUser);
 
+routes.get("/getfollowADMIN", middlewareAdmin, followRegisterUser.getFollowUSer);
+routes.post("/followregisterinit", followRegisterUser.initFollow);
+routes.post("/followregisterpart", followRegisterUser.followRegisterPart);
 
 
 export default routes;
