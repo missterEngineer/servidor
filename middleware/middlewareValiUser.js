@@ -6,15 +6,17 @@ export const middlewareValiUSer = async (req, res, next) =>{
 
         const {cuenta} = req.body;
         
-        let queryUserName = "SELECT * FROM users WHERE username = $1";
-        const resUserValidar = await pool.query(queryUserName, [cuenta.username]);
-        if(resUserValidar.rows.length >= 1){
-    
-            return res.status(400).send({
-                msg: "Nombre de usuario ya registrado"
-            })
+        if(cuenta.username){
+            let queryUserName = "SELECT * FROM users WHERE username = $1";
+            const resUserValidar = await pool.query(queryUserName, [cuenta.username]);
+            if(resUserValidar.rows.length >= 1){
+        
+                return res.status(400).send({
+                    msg: "Nombre de usuario ya registrado"
+                })
+            }
         }
-    
+
         let queryUserEmail = "SELECT * FROM users WHERE email = $1";
         const resUserValidarEmail = await pool.query(queryUserEmail, [cuenta.email]);
         if(resUserValidarEmail.rows.length >= 1){

@@ -29,6 +29,7 @@ import middlewareAdmin from "../middleware/middlewareAdmin.js"
 import getInfoAdmin from "../controllers/controllersAdmin/infoUsers/getInfoAdmin.js";
 import seekerUser from "../controllers/controllersAdmin/seeker/seekerUser.js";
 import followRegisterUser from "../controllers/controllersAdmin/followUser/followUserRegister.js";
+import homeEverest from "../controllers/everest/homeEverest.js";
 
 const upload = multer({storage});
 const routes = Router();
@@ -90,11 +91,20 @@ routes.put("/puteverest", middleware, controllerEverest.act);
 routes.delete("/cleareverest/:id", middleware, controllerEverest.clear);
 
 
-routes.post("/everesthome", registerEverestHome);
+// routes.post("/everesthome", registerEverestHome);
 routes.post("/registerusercheck", middleware, registerPer);
 
 routes.post("/checkermail", middlewareValiUSer, checkerMail);
 routes.post("/checkmail", checkerCode);
+
+
+// EVEREST HOME  
+
+routes.get("/getalleverest/:page", homeEverest.getAll);
+routes.post("/checkeemailuser", homeEverest.exists);
+routes.post("/neweverestRuser", middlewareValiUSer, homeEverest.newEverestNewUser);
+routes.post("/neweverestcheckuser", homeEverest.newEverestUser);
+
 
 
 // ADMIN ROUTES

@@ -12,6 +12,12 @@ export const registerUser = async (values, typeUser) =>{
 
     await pool.query(queryUser, [values.username, values.email, hash, true, null, typeUser]);
 
+    let queryGetId = "SELECT id_user FROM users WHERE email = $1";
+
+    const resId = await pool.query(queryGetId, [values.email]);
+
+    return resId.rows[0].id_user;
+
 };
 
 export const registerPersona = async (id, values, profecion) =>{

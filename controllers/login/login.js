@@ -13,6 +13,7 @@ const controllersLogin = {
 
         const {username, password} = req.body;
 
+
         const queryUser = "SELECT * FROM users WHERE username = $1";
         const resUser = await pool.query(queryUser, [username]);
 
