@@ -31,6 +31,7 @@ import seekerUser from "../controllers/controllersAdmin/seeker/seekerUser.js";
 import followRegisterUser from "../controllers/controllersAdmin/followUser/followUserRegister.js";
 import homeEverest from "../controllers/everest/homeEverest.js";
 
+
 const upload = multer({storage});
 const routes = Router();
 
@@ -111,6 +112,7 @@ routes.post("/neweverestcheckuser", homeEverest.newEverestUser);
 
 
 routes.post("/loginADMIN", loginAdmin);
+
 
 routes.get("/getInfoUserADMIN/:idUser", middlewareAdmin, getInfoAdmin.section);
 routes.get("/getPDFUserADMIN/:idUSer", middlewareAdmin, getInfoAdmin.sectionFull);
