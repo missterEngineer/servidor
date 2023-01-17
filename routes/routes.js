@@ -32,6 +32,7 @@ import followRegisterUser from "../controllers/controllersAdmin/followUser/follo
 import homeEverest from "../controllers/everest/homeEverest.js";
 import controllerRegister from "../controllers/controllersRecruiter/register/registerRecuiter.js";
 import controlerRegisterTalent from "../controllers/controllersRecruiter/addTalent/addTalent.js";
+import registerAdmin from "../controllers/controllersAdmin/registerAdmin/registerAdmin.js";
 
 
 const upload = multer({storage});
@@ -115,6 +116,7 @@ routes.post("/neweverestcheckuser", homeEverest.newEverestUser);
 
 routes.post("/loginADMIN", loginAdmin);
 
+routes.post("/REGISTERADMIN", registerAdmin);
 
 routes.get("/getInfoUserADMIN/:idUser", middlewareAdmin, getInfoAdmin.section);
 routes.get("/getPDFUserADMIN/:idUSer", middlewareAdmin, getInfoAdmin.sectionFull);
