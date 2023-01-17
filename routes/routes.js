@@ -30,6 +30,8 @@ import getInfoAdmin from "../controllers/controllersAdmin/infoUsers/getInfoAdmin
 import seekerUser from "../controllers/controllersAdmin/seeker/seekerUser.js";
 import followRegisterUser from "../controllers/controllersAdmin/followUser/followUserRegister.js";
 import homeEverest from "../controllers/everest/homeEverest.js";
+import controllerRegister from "../controllers/controllersRecruiter/register/registerRecuiter.js";
+import controlerRegisterTalent from "../controllers/controllersRecruiter/addTalent/addTalent.js";
 
 
 const upload = multer({storage});
@@ -121,6 +123,16 @@ routes.post("/seekerUsers", middlewareAdmin, seekerUser);
 routes.get("/getfollowADMIN", middlewareAdmin, followRegisterUser.getFollowUSer);
 routes.post("/followregisterinit", followRegisterUser.initFollow);
 routes.post("/followregisterpart", followRegisterUser.followRegisterPart);
+
+
+// RECRUITER
+
+routes.post("/registerrecruiter", middlewareValiToken, middlewareValiUSer, controllerRegister.register);
+
+
+// REGISTRO TALENT
+
+routes.post("/addtalent", middleware, controlerRegisterTalent.register);
 
 
 export default routes;
