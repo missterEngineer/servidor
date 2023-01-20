@@ -88,9 +88,6 @@ const getInfo = {
         let queryStudies = "SELECT * FROM studies WHERE studies.user_id = $1";
         const resStudies = await pool.query(queryStudies, [valor])
 
-        let queryCursos = "SELECT * FROM courses WHERE courses.user_id = $1";
-        const resCursos = await pool.query(queryCursos, [valor]);
-
         let queryJob = "SELECT * FROM jobs WHERE jobs.user_id = $1";
         const resJob = await pool.query(queryJob, [valor]);
 
@@ -106,10 +103,8 @@ const getInfo = {
         const info ={
             user: resUser.rows[0],
             estudios: resStudies.rows,
-            cursos: resCursos.rows,
             job: resJob.rows,
             idiomas: resIdiomas.rows,
-            softSkill: resSoft.rows,
             skills: resSkills.rows,
             eve: resEve.rows
         };
