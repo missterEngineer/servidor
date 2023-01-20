@@ -97,9 +97,6 @@ const getInfo = {
         let queryIdiomas = "SELECT * FROM languages WHERE languages.user_id = $1";
         const resIdiomas = await pool.query(queryIdiomas, [valor])
 
-        let querySoft = "SELECT * FROM softSkills WHERE softSkills.user_id = $1";
-        const resSoft = await pool.query(querySoft, [valor]);
-
         let querySkills = "SELECT * FROM skills WHERE skills.user_id = $1";
         const resSkills = await pool.query(querySkills, [valor])
 
