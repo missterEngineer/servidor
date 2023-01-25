@@ -1,6 +1,5 @@
 
 import pool from "../../../bd/db.js";
-import { registerExpLaboral, registerSkills } from "../../register/registerParts.js";
 import { registerTalent, registerTalentExp, registertalentFormacion, registerTalentIdiomas, registertalentInfo, registerTalentSkills } from "./addTalentPart.js";
 
 const controlerRegisterTalent = {
@@ -71,8 +70,45 @@ const controlerRegisterTalent = {
         try {
 
             const id = req.userInfo.id;
+
+
+            let queryTalent = "SELECT talent.id_talent, talent.nickname, talent.email, talentInfo.names, talentInfo.surnames, talentInfo.profesion, skillstalent.skill FROM talent LEFT JOIN talentInfo ON talentInfo.talent_id = talent.id_talent LEFT JOIN skillstalent ON skillstalent.talent_id = talent.id_talent WHERE talent.user_id = $1";
+
+            const {rows} = await pool.query(queryTalent, [id]);
+
+            let talents = [];
+
+            if(rows.length >= 1){
+                rows.map((el) =>{
+                    const valor = talents.filter(ele => ele.id_talent == el.id_talent);
+                    if(valor.length >= 1){
+                        const indice = talents.findIndex(id => id.id_talent == el.id_talent);
+                        talents[indice].skills = [el.skill, ...talents[indice].skills]
+
+                    }else{
+                        const talent = {
+                            id_talent: el.id_talent,
+                            nickname: el.nickname,
+                            email: el.email,
+                            profesion: el.profesion,
+                            names: el.names,
+                            surnames: el.surnames,
+                            skills:[el.skill]
+                        }
+
+                        talents = [talent, ...talents];
+                    }
+                })
+            }
+
+
+            return res.status(200).send({
+                msg: "listo",
+                talents
+            })
             
         } catch (error) {
+            console.log(error)
             return res.status(400).send({
                 msg: "Vuelva a intentarlo si el error persiste intentelo mas tarde"
             })

@@ -32,6 +32,8 @@ import followRegisterUser from "../controllers/controllersAdmin/followUser/follo
 import homeEverest from "../controllers/everest/homeEverest.js";
 import controllerRegister from "../controllers/controllersRecruiter/register/registerRecuiter.js";
 import controlerRegisterTalent from "../controllers/controllersRecruiter/addTalent/addTalent.js";
+import seekerProfile from "../controllers/seekerProfile/seekerProfile.js";
+import { loginGoogleApi, registerGoogle } from "../controllers/register/registerGoogleApi.js";
 
 
 
@@ -134,6 +136,14 @@ routes.post("/registerrecruiter", middlewareValiToken, middlewareValiUSer, contr
 // REGISTRO TALENT
 
 routes.post("/addtalent", middleware, controlerRegisterTalent.register);
+routes.get("/getmytalent", middleware, controlerRegisterTalent.get);
+routes.post("/buscadortalent", seekerProfile);
+
+
+// REGISTRO GOOGLE
+
+routes.post("/loginGoogleApi", loginGoogleApi);
+routes.post("/registerGoogleApi", middlewareValiUSer, registerGoogle)
 
 
 export default routes;

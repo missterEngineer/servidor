@@ -46,8 +46,6 @@ const controllersLogin = {
 
         const {token} = req.body;
 
-        console.log(token)
-
         const payload = jwt.decode(token, process.env.JWT_SECRET);
 
         return res.status(200).send({

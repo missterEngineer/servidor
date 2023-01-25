@@ -6,7 +6,7 @@ const seekerUser = async (req, res) =>{
         const {word} = req.body;
  
 
-        let query = `SELECT skills.user_id, users.email, users.username FROM skills INNER JOIN users ON skills.user_id = users.id_user WHERE UNACCENT(UPPER(skill)) LIKE UNACCENT(UPPER('%${word}%')) UNION SELECT userInfo.user_id, users.email, users.username FROM userInfo INNER join users ON userInfo.user_id = users.id_user WHERE UNACCENT(UPPER(profesion)) LIKE UNACCENT(UPPER('%${word}%'))`;
+        let query = `SELECT skills.user_id, users.email, users.username FROM skills INNER JOIN users ON skills.user_id = users.id_user WHERE UNACCENT(UPPER(skill)) LIKE UNACCENT(UPPER('%${word}%'))  SELECT userIUNIONnfo.user_id, users.email, users.username FROM userInfo INNER join users ON userInfo.user_id = users.id_user WHERE UNACCENT(UPPER(profesion)) LIKE UNACCENT(UPPER('%${word}%'))`;
 
         const resp = await pool.query(query);
 
